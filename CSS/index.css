@@ -227,6 +227,9 @@ body {
   letter-spacing: 1px;
   font-weight: bold;
 }
+.cards-container .card-hidden {
+  display: none;
+}
 
 .carousel {
   width: 100%;
