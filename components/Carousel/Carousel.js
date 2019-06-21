@@ -1,8 +1,46 @@
 class Carousel {
+  constructor(elementIn) {
+    this.element = elementIn;
+    this.currentIndex = 0;
+    this.track = this.element.querySelector('.carousel-track');
+    this.slides = Array.from(this.element.querySelectorAll('img')).map(
+      (slide, index) => new Slide(slide, this.track, index)
+    );
+    this.leftButton = this.element.querySelector('.left-button');
+    this.rightButton = this.element.querySelector('.right-button');
+    this.leftButton.addEventListener('click', () => this.prevSlide());
+    this.rightButton.addEventListener('click', () => this.nextSlide());
+  }
 
+  nextSlide() {
+    this.currentIndex >= this.slides.length - 1
+      ? (this.currentIndex = 0)
+      : this.currentIndex++;
+    this.slides[this.currentIndex].select();
+  }
+
+  prevSlide() {
+    this.currentIndex <= 0
+      ? (this.currentIndex = this.slides.length - 1)
+      : this.currentIndex--;
+    this.slides[this.currentIndex].select();
+  }
 }
 
-let carousel = document.querySelector();
+class Slide {
+  constructor(elementIn, trackIn, indexIn) {
+    this.element = elementIn;
+    this.track = trackIn;
+    this.index = indexIn;
+  }
+
+  select() {
+    const translate = this.index * 100;
+    this.track.style.transform = `translate(-${translate}%)`;
+  }
+}
+
+new Carousel(document.querySelector('.carousel'));
 
 /* If You've gotten this far, you're on your own! Although we will give you some hints:
     1. You will need to grab a reference to the carousel, and in it grab the left and right buttons
