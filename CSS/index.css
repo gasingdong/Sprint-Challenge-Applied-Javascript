@@ -264,7 +264,6 @@ body {
 .carousel .left-button:hover, .carousel .right-button:hover {
   color: #333;
   background-color: #fff;
-  border: 2px solid #333;
 }
 .carousel .left-button {
   top: 50%;
