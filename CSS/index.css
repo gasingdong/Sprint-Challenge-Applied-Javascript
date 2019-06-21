@@ -280,5 +280,8 @@ body {
   width: 100%;
   display: none;
 }
+.carousel .current-slide {
+  display: block;
+}
 
 /*# sourceMappingURL=index.css.map */
