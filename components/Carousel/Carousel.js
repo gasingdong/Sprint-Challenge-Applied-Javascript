@@ -2,8 +2,9 @@ class Carousel {
   constructor(elementIn) {
     this.element = elementIn;
     this.currentIndex = 0;
+    this.track = this.element.querySelector('.carousel-track');
     this.slides = Array.from(this.element.querySelectorAll('img')).map(
-      slide => new Slide(slide)
+      (slide, index) => new Slide(slide, this.track, index)
     );
     this.leftButton = this.element.querySelector('.left-button');
     this.rightButton = this.element.querySelector('.right-button');
@@ -12,7 +13,6 @@ class Carousel {
   }
 
   nextSlide() {
-    this.slides[this.currentIndex].deselect();
     this.currentIndex >= this.slides.length - 1
       ? (this.currentIndex = 0)
       : this.currentIndex++;
@@ -20,7 +20,6 @@ class Carousel {
   }
 
   prevSlide() {
-    this.slides[this.currentIndex].deselect();
     this.currentIndex <= 0
       ? (this.currentIndex = this.slides.length - 1)
       : this.currentIndex--;
@@ -29,16 +28,15 @@ class Carousel {
 }
 
 class Slide {
-  constructor(elementIn) {
+  constructor(elementIn, trackIn, indexIn) {
     this.element = elementIn;
+    this.track = trackIn;
+    this.index = indexIn;
   }
 
   select() {
-    this.element.classList.add('current-slide');
-  }
-
-  deselect() {
-    this.element.classList.remove('current-slide');
+    const translate = this.index * 100;
+    this.track.style.transform = `translate(-${translate}%)`;
   }
 }
 

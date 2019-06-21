@@ -33,11 +33,12 @@
     right: 25px;
     transform: translate(0, -50%);
   }
-  img {
-    @include width-100();
-    display: none;
+  .carousel-track {
+    display: flex;
+    transition: transform 0.3s ease-in;
   }
-  .current-slide {
-    display: block;
+  .slide {
+    @include width-100();
+    min-width: 100%;
   }
 }

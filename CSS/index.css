@@ -27,6 +27,7 @@ body {
   position: fixed;
   height: 44px;
   background-color: #333;
+  z-index: 1;
 }
 .top-bar .container {
   width: 100%;
@@ -275,12 +276,13 @@ body {
   right: 25px;
   transform: translate(0, -50%);
 }
-.carousel img {
-  width: 100%;
-  display: none;
+.carousel .carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-in;
 }
-.carousel .current-slide {
-  display: block;
+.carousel .slide {
+  width: 100%;
+  min-width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */
